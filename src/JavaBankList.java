@@ -336,7 +336,7 @@ public class JavaBankList extends JFrame {
         // get the element and set to TempAccount
         Account tempAccount = (Account) Accounts.get(i);
         // if account number matches and deposit field has entry then deposit in account
-        if ((tempAccount.accountnum == Accountnum) && (Deposit > 0)) {
+        if ((tempAccount.accountNum == Accountnum) && (Deposit > 0)) {
           tempAccount.setbalance(tempAccount.getbalance() + Deposit);
           Accounts.set(i, tempAccount);
           displayJTextArea.setText(
@@ -345,7 +345,7 @@ public class JavaBankList extends JFrame {
 
         }
         // if account number matches and withdrawal field has entry then withdraw from account
-        if ((tempAccount.accountnum == Accountnum) && (Withdraw > 0)) {
+        if ((tempAccount.accountNum == Accountnum) && (Withdraw > 0)) {
           tempAccount.setbalance(tempAccount.getbalance() - Withdraw);
           Accounts.set(i, tempAccount);
           displayJTextArea.setText(

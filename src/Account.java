@@ -1,43 +1,58 @@
 
-public class Account {
+public class Account extends AbstractBankAccount {
 
-  // class variables
-  String accountname;
-  int accountnum;
-  int balance;
-
-  //default constructor for Account
-  Account() {
-    this.accountname = "EMPTY";
-    this.accountnum = 0;
-    this.balance = 0;
-  }
+  // Instance Fields
+  private int bonusValue;
 
   //overloaded constructor for Account
   Account(String name, int num, int amt) {
-    accountname = name;
-    accountnum = num;
-    balance = amt;
+    super(name, num, amt + calculateInitialBonusValue(amt));
   }
+
+  private static int calculateInitialBonusValue(int amt) {
+    if (amt >= 1 && amt <= 100) {
+      return 10;
+    } else if (amt <= 300) {
+      return 20;
+    } else {
+      return 30;
+    }
+//endif
+  }//end method calculateInitialBonusValue
 
   //make a deposit to the balance
   public void deposit(int amt) {
-    balance = balance + amt;
-  }
+    if (amt > 100) {
+      balance = balance + (amt + (int) (bonusValue * 0.1));
+    } else {
+      balance = balance + amt;
+    }
+//endif
+  }//end method deposit
 
   //make a withdrawal from the balance
   public void withdraw(int amt) {
     balance = balance - amt;
   }
 
+  @Override
+  public int getBalance() {
+    return balance;
+  }
+
+  @Override
+  public String getBankName() {
+    return InterfaceBankAccount.BANK;
+  }
+
   //modifier to set the accountname
   public void setaccountname(String name) {
-    accountname = name;
+    accountName = name;
   }
 
   //modifier to set the accountnumber
   public void setaccountnum(int num) {
-    accountnum = num;
+    accountNum = num;
   }
 
   //modifier to set the balance
@@ -48,13 +63,13 @@ public class Account {
   //accessor to get the accountname
   public String getaccountname() {
 
-    return accountname;
+    return accountName;
   }
 
   //accessor to get the accountnumber
   public int getaccountnum() {
 
-    return accountnum;
+    return accountNum;
   }
 
   //accessor to get the account balance
@@ -65,6 +80,10 @@ public class Account {
 
   //print method
   public void print() {
-    System.out.println(accountname + " " + accountnum + " " + balance);
+    System.out.println(
+        "Bank Name \t\t\t\t : " + getBankName() + "\n" +
+            "Account Holder \t\t : " + accountName + "\n" +
+            "Account Number \t\t : " + accountNum + "\n" +
+            "Account balance \t : " + balance);
   }
 }

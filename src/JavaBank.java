@@ -388,9 +388,12 @@ public class JavaBank extends JFrame {
     } else {
       for (int i = 0; i < noAccounts; i++) {
 
-        displayJTextArea.append(
-            myAccounts[i].getaccountname() + " " + myAccounts[i].getaccountnum() + " "
-                + myAccounts[i].getbalance() + "\n");
+        displayJTextArea.setText(
+            "Bank Name : " + myAccounts[i].getBankName()
+                + "\nAccount Holder : " + myAccounts[i].getaccountname()
+                + "\nAccount Number : " + myAccounts[i].getaccountnum()
+                + "\nAccount balance: " + myAccounts[i].getBalance());
+
 
 
       }
@@ -404,7 +407,19 @@ public class JavaBank extends JFrame {
 
 
   }
+  private void displayAccountDetails(String bName, String aName,
+      int aNum, int aBal){
+    displayJTextArea.setText( "Bank Name : " + bName
+        + "\nAccount Holder : " + aName
+        + "\nAccount Number : " + aNum
+        + "\nAccount balance: " + aBal);
+  }//end method displayAccountDetails
 
+  // method call
+  //displayAccountDetails(myAccounts[i].getBankName(),
+  //myAccounts[i].getAccountName(),
+  //myAccounts[i].getAccountNum(),
+  //myAccounts[i].getBalance());
 
   public static void main(String[] args) {
     // Populate arrays with the word EMPTY
