@@ -13,7 +13,7 @@ public class testCreditAccount {
 
     // Instantiate 2 credit accounts
     // Using default constructor
-    CreditAccount C1 = new CreditAccount();
+    Account C1 = new CreditAccount();
     // Using constructor with values which will call constructor from super
     Account C2 = new CreditAccount("Another", 66778, 1000, 500);
 
